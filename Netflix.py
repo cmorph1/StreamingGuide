@@ -61,7 +61,6 @@ class Netflix:
     def search(self, search: str) -> list:
         self.login_to_netflix()
         self._navigate_to_profile()
-        self._search_netflix(search)
         result = self._build_list(search)
         return result
 
