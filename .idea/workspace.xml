@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/Netflix.py" description="driver.get(&quot;https://www.netflix.com/gb/login&quot;)" line="10" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2baffe26-87b2-4819-ade2-41500175f013" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Amazon.py" beforeDir="false" afterPath="$PROJECT_DIR$/Amazon.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Netflix.py" beforeDir="false" afterPath="$PROJECT_DIR$/Netflix.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Now TV.py" beforeDir="false" afterPath="$PROJECT_DIR$/Now TV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream_Guide.py" beforeDir="false" afterPath="$PROJECT_DIR$/StreamGuide.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,20 +70,47 @@
     <session id="1621383687">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.closed" value="9" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.37" value="1" />
+          <entry key="project.opened" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="56" />
+          <entry key="py" value="4496" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="56" />
+          <entry key="Python" value="4496" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="3" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="59" lean-forward="true" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
+            <state relative-caret-position="340">
+              <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -87,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="8" />
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -96,20 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Original.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="24" column="60" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="60" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Amazon.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="661">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="221">
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -120,10 +142,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Netflix.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="238">
+              <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
+                <marker date="1549481978121" expanded="true" signature="2084:2093" ph="..." />
+                <marker date="1549481978121" expanded="true" signature="2165:2200" ph="..." />
+                <marker date="1549481978121" expanded="true" signature="2224:2257" ph="..." />
+                <marker date="1549481978121" expanded="true" signature="2282:2314" ph="..." />
+                <marker date="1549481978121" expanded="true" signature="2338:2370" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Amazon.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1241">
+              <caret line="80" selection-start-line="80" selection-end-line="83" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1549393904004" expanded="true" signature="345:351" ph="..." />
+                <marker date="1549393904004" expanded="true" signature="424:425" ph="..." />
+                <marker date="1549393904004" expanded="true" signature="425:426" ph="..." />
               </folding>
             </state>
           </provider>
@@ -132,8 +174,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Now TV.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="22" column="136" selection-start-line="22" selection-start-column="136" selection-end-line="22" selection-end-column="136" />
+            <state relative-caret-position="-36">
+              <caret line="22" column="127" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="127" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -141,9 +183,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stream_Guide.py">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/StreamGuide.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1125">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1549482540721" expanded="true" signature="350:356" ph="..." />
+                <marker date="1549482540721" expanded="true" signature="1140:1146" ph="..." />
+                <marker date="1549482540721" expanded="true" signature="1141:1146" ph="..." />
+                <marker date="1549482540721" expanded="true" signature="1165:1184" ph="..." />
+                <marker date="1549482540721" expanded="true" signature="2810:2819" ph="..." />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -190,16 +244,17 @@
         <option value="$PROJECT_DIR$/Original.py" />
         <option value="$PROJECT_DIR$/Selenium.py" />
         <option value="$PROJECT_DIR$/Steam_Guide.py" />
-        <option value="$PROJECT_DIR$/Amazon.py" />
-        <option value="$PROJECT_DIR$/Netflix.py" />
+        <option value="$PROJECT_DIR$/Scraper.py" />
         <option value="$PROJECT_DIR$/Stream_Guide.py" />
         <option value="$PROJECT_DIR$/Now TV.py" />
-        <option value="$PROJECT_DIR$/Scraper.py" />
         <option value="$PROJECT_DIR$/Settings.py" />
+        <option value="$PROJECT_DIR$/Amazon.py" />
+        <option value="$PROJECT_DIR$/Netflix.py" />
+        <option value="$PROJECT_DIR$/StreamGuide.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="980" />
@@ -223,7 +278,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -236,15 +290,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549056308382" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549458369936" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.kotlinCompiler" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -258,7 +313,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Now TV">
+  <component name="RunManager" selected="Python.StreamGuide">
     <configuration name="Amazon" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Streaming_Guide" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -343,7 +398,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Steam_Guide" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="StreamGuide" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Streaming_Guide" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -355,7 +410,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\cmorp\PythonPrograms\Streaming_Guide\Amazon.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/StreamGuide.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -366,18 +421,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.Scraper" />
-      <item itemvalue="Python.Steam_Guide" />
       <item itemvalue="Python.Netflix" />
       <item itemvalue="Python.Amazon" />
       <item itemvalue="Python.Now TV" />
+      <item itemvalue="Python.StreamGuide" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Now TV" />
+        <item itemvalue="Python.StreamGuide" />
         <item itemvalue="Python.Amazon" />
         <item itemvalue="Python.Netflix" />
+        <item itemvalue="Python.Now TV" />
         <item itemvalue="Python.Scraper" />
-        <item itemvalue="Python.Steam_Guide" />
       </list>
     </recent_temporary>
   </component>
@@ -406,7 +461,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17986578" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20402685" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -415,13 +470,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297587" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3243968" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3243968" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3994638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3297587" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3297587" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3297587" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -435,6 +490,22 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/Stream_guide" />
+    </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.IdeaIC2018.2/system/python_stubs/1619917428/builtins.py">
@@ -452,10 +523,27 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Selenium.py" />
+    <entry file="file://$PROJECT_DIR$/Scraper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Original.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="24" column="60" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="60" />
+        <state relative-caret-position="221">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -464,8 +552,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Amazon.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="1241">
+          <caret line="80" selection-start-line="80" selection-end-line="83" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1549393904004" expanded="true" signature="345:351" ph="..." />
+            <marker date="1549393904004" expanded="true" signature="424:425" ph="..." />
+            <marker date="1549393904004" expanded="true" signature="425:426" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Now TV.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="22" column="127" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="127" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -474,40 +575,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Netflix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="238">
+          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+            <marker date="1549481978121" expanded="true" signature="2084:2093" ph="..." />
+            <marker date="1549481978121" expanded="true" signature="2165:2200" ph="..." />
+            <marker date="1549481978121" expanded="true" signature="2224:2257" ph="..." />
+            <marker date="1549481978121" expanded="true" signature="2282:2314" ph="..." />
+            <marker date="1549481978121" expanded="true" signature="2338:2370" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Now TV.py">
+    <entry file="file://$PROJECT_DIR$/StreamGuide.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="136" selection-start-line="22" selection-start-column="136" selection-end-line="22" selection-end-column="136" />
+        <state relative-caret-position="-1125">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stream_Guide.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scraper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="59" lean-forward="true" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1549482540721" expanded="true" signature="350:356" ph="..." />
+            <marker date="1549482540721" expanded="true" signature="1140:1146" ph="..." />
+            <marker date="1549482540721" expanded="true" signature="1141:1146" ph="..." />
+            <marker date="1549482540721" expanded="true" signature="1165:1184" ph="..." />
+            <marker date="1549482540721" expanded="true" signature="2810:2819" ph="..." />
           </folding>
         </state>
       </provider>

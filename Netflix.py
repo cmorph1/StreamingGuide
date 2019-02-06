@@ -9,17 +9,17 @@ import Settings as s
 
 Search = input("What would you like to watch? \n")
 driver = webdriver.Chrome()
-driver.get("https://www.netflix.com/gb/login")
 wait = WebDriverWait(driver, 30)
 
 
 def logintonetflix():
-    username = driver.find_element_by_name("userLoginId")
+    driver.get("https://www.netflix.com/gb/login")
+    username = wait.until(EC.visibility_of_element_located((By.NAME, "userLoginId")))
     username.clear()
-    username.send_keys(s.Netflixun)
+    username.send_keys(s.NETFLIXUN)
     password = driver.find_element_by_name("password")
     password.clear()
-    password.send_keys(s.Netflixp)
+    password.send_keys(s.NETFLIXP)
     driver.find_element_by_xpath('//*[@id="appMountPoint"]/div/div[3]/div/div/div[1]/form/button').click()
 
 
@@ -56,6 +56,24 @@ def buildlist():
             return LinksAndTitles[1:11]
         else:
             return LinksAndTitles[0:10]
+
+    def _get_url(self):
+        return "https://www.netflix.com/gb/login"
+
+    def _get_userinput(self):
+        return "userLoginId"
+
+    def _get_username(self):
+        return s.NETFLIXUN
+
+    def _get_passinput(self):
+        return "password"
+
+    def _get_userpass(self):
+        return s.NETFLIXP
+
+    def _get_submitbt(self):
+        return '//*[@id="appMountPoint"]/div/div[3]/div/div/div[1]/form/button'
 
 
 print(buildlist())

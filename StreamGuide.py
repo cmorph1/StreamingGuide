@@ -8,13 +8,13 @@ import Settings as S
 import time
 
 
-class Amazon:
+class StreamGuide:
 
     def __init__(self):
         self._driver = None
         self._wait = None
 
-    def login_to_amazon(self):
+    def login(self):
         global driver
         driver = webdriver.Chrome()
         global wait
@@ -27,6 +27,37 @@ class Amazon:
         userpass.clear()
         userpass.send_keys(self._get_userpass())
         driver.find_element_by_xpath(self._get_submitbt()).click()
+
+    def _build_list(self, search: str):
+        pass
+
+    def search(self, search: str):
+        if self._driver == None:
+            self.login()
+
+    def _get_url(self):
+        pass
+
+    def _get_userinput(self):
+        pass
+
+    def _get_username(self):
+        pass
+
+    def _get_passinput(self):
+        pass
+
+    def _get_userpass(self):
+        pass
+
+    def _get_submitbt(self):
+        pass
+
+
+class Amazon(StreamGuide):
+
+    def __init__(self):
+        super().__init__()
 
     def _navigate_to_prime(self):
         useraccount = driver.find_element_by_id("nav-link-yourAccount")
@@ -53,7 +84,7 @@ class Amazon:
         return links_and_titles[:20:2]
 
     def search(self, search: str):
-        self.login_to_amazon()
+        super().search(search)
         self._navigate_to_prime()
         self._search_prime(search)
         result = self._build_list(search)

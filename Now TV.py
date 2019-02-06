@@ -3,33 +3,33 @@ from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as ec
 import time
 import Settings as s
 
 Search = input("What would you like to watch? \n")
 driver = webdriver.Chrome()
-driver.get("https://www.nowtv.com/gb/sign-in?successUrl=https%3A%2F%2Fwww.nowtv.com%2Fhome%2Fexisting")
 wait = WebDriverWait(driver, 30)
 
 
 def logintonowtv():
-    username = wait.until(EC.visibility_of_element_located((By.NAME, "userIdentifier")))
+    driver.get("https://www.nowtv.com/gb/sign-in?successUrl=https%3A%2F%2Fwww.nowtv.com%2Fhome%2Fexisting")
+    username = wait.until(ec.visibility_of_element_located((By.NAME, "userIdentifier")))
     username.clear()
-    username.send_keys(s.Nowtvun)
+    username.send_keys(s.NOWTVUN)
     password = driver.find_element_by_name("password")
     password.clear()
-    password.send_keys(s.Nowtvp)
+    password.send_keys(s.NOWTVP)
     driver.find_element_by_xpath('//*[@id="mount"]/div/div/div[2]/div[2]/section/div/section[1]/div/div/div/form/div[3]/button').click()
 
 
 def navigatetonowtv():
-    yourprofile = wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="ib-section-header-region"]/div/div[2]/div/div[2]/nav/ul/li[7]/div/a')))
+    yourprofile = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="ib-section-header-region"]/div/div[2]/div/div[2]/nav/ul/li[7]/div/a')))
     yourprofile.click()
 
 
 def searchnowtv():
-    searchicon = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, 'search-suggest-input')))
+    searchicon = wait.until(ec.visibility_of_element_located((By.CLASS_NAME, 'search-suggest-input')))
     hover = ActionChains(driver).move_to_element(searchicon)
     hover.perform()
     time.sleep(5)
