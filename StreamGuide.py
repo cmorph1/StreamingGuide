@@ -108,6 +108,14 @@ class Amazon(StreamGuide):
     def _get_submitbt(self):
         return '//*[@id="signInSubmit"]'
 
+class Netflix(StreamGuide):
+
+    def __init__(self):
+        super().__init__()
+
+
+
+
 
 amazon_search = Amazon()
 search_str = input("What would you like to watch? \n")
