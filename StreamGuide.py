@@ -32,7 +32,7 @@ class StreamGuide:
         pass
 
     def search(self, search: str):
-        if self._driver == None:
+        if self._driver is None:
             self.login()
 
     def _get_url(self):
@@ -71,7 +71,7 @@ class Amazon(StreamGuide):
         searchbox.clear()
         searchbox.send_keys(str(search))
         driver.find_element_by_xpath('//*[@id="nav-search"]/form/div[2]/div').click()
-        time.sleep(5)
+        time.sleep(15)
         html = driver.page_source
         return BS(html, features="lxml")
 
@@ -83,10 +83,9 @@ class Amazon(StreamGuide):
             links_and_titles.append(((films.find_next(string=True)), (films.find_next("a")["href"])))
         return links_and_titles[:20:2]
 
-    def search(self, search: str):
+    def search(self, search: str) -> list:
         super().search(search)
         self._navigate_to_prime()
-        self._search_prime(search)
         result = self._build_list(search)
         return result
 
@@ -108,16 +107,129 @@ class Amazon(StreamGuide):
     def _get_submitbt(self):
         return '//*[@id="signInSubmit"]'
 
+
 class Netflix(StreamGuide):
 
     def __init__(self):
         super().__init__()
 
+    def _navigate_to_profile(self):
+        yourprofile = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="appMountPoint"]/div/div/div/div/div[2]/div/div/ul/li[1]/div/a/div/div')))
+        yourprofile.click()
+
+    def _search_netflix(self, search: str):
+        searchicon = wait.until(ec.visibility_of_element_located((By.CLASS_NAME, 'icon-search')))
+        hover = ActionChains(driver).move_to_element(searchicon)
+        hover.perform()
+        searchicon.click()
+        searchbox = driver.switch_to.active_element
+        searchbox.send_keys(str(search))
+        time.sleep(5)
+        html = driver.page_source
+        return BS(html, features="lxml")
+
+    def _build_list(self, search: str):
+        soup = self._search_netflix(search)
+        finds = soup.find_all("a", class_="slider-refocus")
+        links_and_titles = []
+        for films in finds:
+            try:
+                links_and_titles.append(((films.find_previous("a")["aria-label"]),
+                                         "www.netflix.com" + (films.find_previous("a")["href"])))
+            except:
+                continue
+        for links in links_and_titles:
+            if links[1] == 'www.netflix.com/YourAccount':
+                return links_and_titles[1:11]
+            else:
+                return links_and_titles[0:10]
+
+    def search(self, search: str) -> list:
+        super().search(search)
+        self._navigate_to_profile()
+        result = self._build_list(search)
+        return result
+
+    def _get_url(self):
+        return "https://www.netflix.com/gb/login"
+
+    def _get_userinput(self):
+        return "userLoginId"
+
+    def _get_username(self):
+        return S.NETFLIXUN
+
+    def _get_passinput(self):
+        return "password"
+
+    def _get_userpass(self):
+        return S.NETFLIXP
+
+    def _get_submitbt(self):
+        return '//*[@id="appMountPoint"]/div/div[3]/div/div/div[1]/form/button'
 
 
+class NowTV(StreamGuide):
 
+    def __init__(self):
+        super().__init__()
+
+    def _navigate_to_nowtv(self):
+        yourprofile = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="ib-section-header-region"]/div/div[2]/div/div[2]/nav/ul/li[7]/div/a')))
+        yourprofile.click()
+
+    def _search_nowtv(self, search: str):
+        searchicon = wait.until(ec.visibility_of_element_located((By.CLASS_NAME, 'search-suggest-input')))
+        hover = ActionChains(driver).move_to_element(searchicon)
+        hover.perform()
+        time.sleep(5)
+        searchicon.click()
+        searchbox = driver.switch_to.active_element
+        searchbox.send_keys(str(search))
+        time.sleep(10)
+        html = driver.page_source
+        return BS(html, features="lxml")
+
+    def _build_list(self, search: str):
+        soup = self._search_nowtv(search)
+        unlisted = soup.find("ul", class_="search-suggest-list focused")
+        try:
+            finds = unlisted.find_all("li", "search-suggest-list-item")
+            links_and_titles = []
+            for films in finds:
+                links_and_titles.append((films.find_next("span", class_="search-suggest-result--asset").text,
+                                         ("www.nowtv.com" + (films.find_next("a")["href"]))))
+            return links_and_titles
+        except:
+            return "Either your search was incorrect or Now TV doesn't have what you are looking for"
+
+    def search(self, search: str) -> list:
+        super().search(search)
+        self._navigate_to_nowtv()
+        result = self._build_list(search)
+        return result
+
+    def _get_url(self):
+        return "https://www.nowtv.com/gb/sign-in?successUrl=https%3A%2F%2Fwww.nowtv.com%2Fhome%2Fexisting"
+
+    def _get_userinput(self):
+        return "userIdentifier"
+
+    def _get_username(self):
+        return S.NOWTVUN
+
+    def _get_passinput(self):
+        return "password"
+
+    def _get_userpass(self):
+        return S.NOWTVP
+
+    def _get_submitbt(self):
+        return '//*[@id="mount"]/div/div/div[2]/div[2]/section/div/section[1]/div/div/div/form/div[3]/button'
 
 amazon_search = Amazon()
+netflix_search = Netflix()
+nowtv_search = NowTV()
 search_str = input("What would you like to watch? \n")
-results = amazon_search.search(search_str)
+results = amazon_search.search(search_str), netflix_search.search(search_str), nowtv_search.search(search_str)
 print(results)

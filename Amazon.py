@@ -52,10 +52,9 @@ class Amazon:
             links_and_titles.append(((films.find_next(string=True)), (films.find_next("a")["href"])))
         return links_and_titles[:20:2]
 
-    def search(self, search: str) -> list:
+    def search(self, search: str):
         self.login_to_amazon()
         self._navigate_to_prime()
-        self._search_prime(search)
         result = self._build_list(search)
         return result
 
