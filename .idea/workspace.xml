@@ -64,26 +64,27 @@
     <session id="1621383687">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.30" value="1" />
-          <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.31" value="2" />
           <entry key="project.open.time.37" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.open.time.43" value="1" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="64" />
-          <entry key="py" value="5889" />
+          <entry key="py" value="6002" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="64" />
-          <entry key="Python" value="5889" />
+          <entry key="Python" value="6002" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -103,7 +104,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="493">
               <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -124,7 +125,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Original.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="221">
               <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -136,8 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Netflix.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="85" column="26" lean-forward="true" selection-start-line="85" selection-end-line="85" selection-end-column="26" />
+            <state relative-caret-position="1326">
+              <caret line="85" column="26" selection-start-line="85" selection-end-line="85" selection-end-column="26" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
                 <marker date="1549490335980" expanded="true" signature="371:431" ph="..." />
@@ -153,16 +154,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Amazon.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+            <state relative-caret-position="595">
+              <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1549495446064" expanded="true" signature="345:351" ph="..." />
-                <marker date="1549495446064" expanded="true" signature="424:425" ph="..." />
-                <marker date="1549495446064" expanded="true" signature="425:426" ph="..." />
+                <marker date="1549544740470" expanded="true" signature="345:351" ph="..." />
+                <marker date="1549544740470" expanded="true" signature="424:425" ph="..." />
+                <marker date="1549544740470" expanded="true" signature="425:426" ph="..." />
               </folding>
             </state>
           </provider>
@@ -171,8 +172,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Now TV.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
+            <state relative-caret-position="1105">
+              <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
                 <marker date="1549490563887" expanded="true" signature="369:429" ph="..." />
@@ -186,20 +187,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StreamGuide.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="82" column="94" selection-start-line="82" selection-start-column="94" selection-end-line="82" selection-end-column="94" />
+            <state relative-caret-position="303">
+              <caret line="238" column="24" lean-forward="true" selection-start-line="238" selection-start-column="24" selection-end-line="238" selection-end-column="24" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1549495044310" expanded="true" signature="350:356" ph="..." />
-                <marker date="1549495044310" expanded="true" signature="1140:1146" ph="..." />
-                <marker date="1549495044310" expanded="true" signature="1141:1146" ph="..." />
-                <marker date="1549495044310" expanded="true" signature="1165:1184" ph="..." />
-                <marker date="1549495044310" expanded="true" signature="2784:2793" ph="..." />
-                <marker date="1549495044310" expanded="true" signature="5335:5344" ph="..." />
-                <marker date="1549495044310" expanded="true" signature="5753:7847" ph="..." />
+                <marker date="1549545690737" expanded="true" signature="350:356" ph="..." />
+                <marker date="1549545690737" expanded="true" signature="1140:1146" ph="..." />
+                <marker date="1549545690737" expanded="true" signature="1141:1146" ph="..." />
+                <marker date="1549545690737" expanded="true" signature="1165:1184" ph="..." />
+                <marker date="1549545690737" expanded="true" signature="2850:2859" ph="..." />
+                <marker date="1549545690737" expanded="true" signature="5401:5410" ph="..." />
+                <marker date="1549545690737" expanded="true" signature="5819:7913" ph="..." />
               </folding>
             </state>
           </provider>
@@ -254,8 +255,8 @@
         <option value="$PROJECT_DIR$/Settings.py" />
         <option value="$PROJECT_DIR$/Netflix.py" />
         <option value="$PROJECT_DIR$/Now TV.py" />
-        <option value="$PROJECT_DIR$/StreamGuide.py" />
         <option value="$PROJECT_DIR$/Amazon.py" />
+        <option value="$PROJECT_DIR$/StreamGuide.py" />
       </list>
     </option>
   </component>
@@ -283,6 +284,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -295,11 +297,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549495448354" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549495666973" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
@@ -318,7 +319,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Amazon">
+  <component name="RunManager" selected="Python.StreamGuide">
     <configuration name="Amazon" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Streaming_Guide" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -433,8 +434,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Amazon" />
         <item itemvalue="Python.StreamGuide" />
+        <item itemvalue="Python.Amazon" />
         <item itemvalue="Python.Now TV" />
         <item itemvalue="Python.Netflix" />
         <item itemvalue="Python.Scraper" />
@@ -465,9 +466,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20402685" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21208054" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -531,7 +531,7 @@
     <entry file="file://$PROJECT_DIR$/Selenium.py" />
     <entry file="file://$PROJECT_DIR$/Scraper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
+        <state relative-caret-position="493">
           <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -548,7 +548,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Original.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="221">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -556,26 +556,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Now TV.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="72" column="24" lean-forward="true" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1549490563887" expanded="true" signature="369:429" ph="..." />
-            <marker date="1549490563887" expanded="true" signature="1021:1030" ph="..." />
-            <marker date="1549490563887" expanded="true" signature="2539:2548" ph="..." />
-            <marker date="1549490563887" expanded="true" signature="2677:2715" ph="..." />
-            <marker date="1549490563887" expanded="true" signature="2795:2827" ph="..." />
-            <marker date="1549490563887" expanded="true" signature="2851:2881" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Netflix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="85" column="26" lean-forward="true" selection-start-line="85" selection-end-line="85" selection-end-column="26" />
+        <state relative-caret-position="1326">
+          <caret line="85" column="26" selection-start-line="85" selection-end-line="85" selection-end-column="26" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
             <marker date="1549490335980" expanded="true" signature="371:431" ph="..." />
@@ -590,32 +574,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StreamGuide.py">
+    <entry file="file://$PROJECT_DIR$/Amazon.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="82" column="94" selection-start-line="82" selection-start-column="94" selection-end-line="82" selection-end-column="94" />
+        <state relative-caret-position="595">
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <marker date="1549495044310" expanded="true" signature="350:356" ph="..." />
-            <marker date="1549495044310" expanded="true" signature="1140:1146" ph="..." />
-            <marker date="1549495044310" expanded="true" signature="1141:1146" ph="..." />
-            <marker date="1549495044310" expanded="true" signature="1165:1184" ph="..." />
-            <marker date="1549495044310" expanded="true" signature="2784:2793" ph="..." />
-            <marker date="1549495044310" expanded="true" signature="5335:5344" ph="..." />
-            <marker date="1549495044310" expanded="true" signature="5753:7847" ph="..." />
+            <marker date="1549544740470" expanded="true" signature="345:351" ph="..." />
+            <marker date="1549544740470" expanded="true" signature="424:425" ph="..." />
+            <marker date="1549544740470" expanded="true" signature="425:426" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon.py">
+    <entry file="file://$PROJECT_DIR$/Now TV.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+        <state relative-caret-position="1105">
+          <caret line="72" column="24" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="24" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <marker date="1549495446064" expanded="true" signature="345:351" ph="..." />
-            <marker date="1549495446064" expanded="true" signature="424:425" ph="..." />
-            <marker date="1549495446064" expanded="true" signature="425:426" ph="..." />
+            <marker date="1549490563887" expanded="true" signature="369:429" ph="..." />
+            <marker date="1549490563887" expanded="true" signature="1021:1030" ph="..." />
+            <marker date="1549490563887" expanded="true" signature="2539:2548" ph="..." />
+            <marker date="1549490563887" expanded="true" signature="2677:2715" ph="..." />
+            <marker date="1549490563887" expanded="true" signature="2795:2827" ph="..." />
+            <marker date="1549490563887" expanded="true" signature="2851:2881" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StreamGuide.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="238" column="24" lean-forward="true" selection-start-line="238" selection-start-column="24" selection-end-line="238" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1549545690737" expanded="true" signature="350:356" ph="..." />
+            <marker date="1549545690737" expanded="true" signature="1140:1146" ph="..." />
+            <marker date="1549545690737" expanded="true" signature="1141:1146" ph="..." />
+            <marker date="1549545690737" expanded="true" signature="1165:1184" ph="..." />
+            <marker date="1549545690737" expanded="true" signature="2850:2859" ph="..." />
+            <marker date="1549545690737" expanded="true" signature="5401:5410" ph="..." />
+            <marker date="1549545690737" expanded="true" signature="5819:7913" ph="..." />
           </folding>
         </state>
       </provider>

@@ -80,7 +80,10 @@ class Amazon(StreamGuide):
         finds = soup.find_all("a", class_="a-link-normal a-text-normal")
         links_and_titles = []
         for films in finds:
-            links_and_titles.append(((films.find_next(string=True)), (films.find_next("a")["href"])))
+            try:
+                links_and_titles.append(((films.find_next(string=True)), (films.find_next("a")["href"])))
+            except:
+                continue
         return links_and_titles[:20:2]
 
     def search(self, search: str) -> list:
@@ -227,9 +230,11 @@ class NowTV(StreamGuide):
     def _get_submitbt(self):
         return '//*[@id="mount"]/div/div/div[2]/div[2]/section/div/section[1]/div/div/div/form/div[3]/button'
 
+
 amazon_search = Amazon()
 netflix_search = Netflix()
 nowtv_search = NowTV()
 search_str = input("What would you like to watch? \n")
 results = amazon_search.search(search_str), netflix_search.search(search_str), nowtv_search.search(search_str)
-print(results)
+for services in results:
+    print(services)
