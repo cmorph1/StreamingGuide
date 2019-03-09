@@ -9,37 +9,56 @@ from kivy.uix.label import Label
 from kivy.uix.screenmanager import Screen, ScreenManager
 from StreamGuideProgram import Netflix, NowTV, Amazon
 
-class WelcomeScreen(Screen):
+class BaseScreen(Screen):
+
+    def __init__(self, **kwargs):
+        super(BaseScreen, self).__init__(**kwargs)
+        global screen_frame
+        screen_frame = BoxLayout(orientation='vertical')
+        self.app_logo = Image(source='StreamGuideLogo.jpg', pos_hint=self._get_position_hint(), size_hint=self._get_size_hint())
+
+    def screen_navigation(self, *args):
+        pass
+
+    def _get_position_hint(self):
+        pass
+
+    def _get_size_hint(self):
+        pass
+
+class WelcomeScreen(BaseScreen):
 
     def __init__(self, **kwargs):
         super(WelcomeScreen, self).__init__(**kwargs)
-        welcome_screen_frame = BoxLayout(orientation='vertical')
-        app_logo = Image(source='StreamGuideLogo.jpg', pos_hint={'y': 1, 'x': 0}, size_hint=(.6, .5))
         intro_label = Label(text='Welcome to Stream Guide! \n'
                                  'Your personal search engine for the major streaming services.\n'
                                  'Simply enter your username and password for the sites you have a subscription too,\n'
                                  'along with what you want to watch and Stream Guide will do the leg work for you.', halign='center')
         start_button = Button(text='Start', font_size='20sp', pos_hint={'x': .4, 'top': 1}, size_hint=(.2, .15))
         start_button.background_color = [0, 0, 9, 1]
-        start_button.bind(on_press=self.go_to_user_details)
+        start_button.bind(on_press=self.screen_navigation)
         space_label = Label(text='')
-        welcome_screen_frame.add_widget(app_logo)
-        welcome_screen_frame.add_widget(intro_label)
-        welcome_screen_frame.add_widget(start_button)
-        welcome_screen_frame.add_widget(space_label)
-        self.add_widget(welcome_screen_frame)
+        screen_frame.add_widget(self.app_logo)
+        screen_frame.add_widget(intro_label)
+        screen_frame.add_widget(start_button)
+        screen_frame.add_widget(space_label)
+        self.add_widget(screen_frame)
 
-    def go_to_user_details(self, *args):
+    def screen_navigation(self, *args):
         self.manager.current = 'user details screen'
 
+    def _get_position_hint(self):
+        return{'y': 1, 'x': 0}
 
-class UserDetailsScreen(Screen):
+    def _get_size_hint(self):
+        return(.6, .5)
+
+
+class UserDetailsScreen(BaseScreen):
 
     def __init__(self, **kwargs):
         super(UserDetailsScreen, self).__init__(**kwargs)
-        search_screen_frame = BoxLayout(orientation='vertical')
         input_frame = GridLayout(cols=3, rows=3, padding=10, spacing=10, row_force_default=True, row_default_height=30)
-        app_logo = Image(source='StreamGuideLogo.jpg', pos_hint={'y': 1, 'x': 0.25}, size_hint=(.5, .45))
         enter_details = Label(text='Please enter your username and password for the sites you are registered with')
         streamer_name_nf = Label(text="Netflix:", font_size='20sp', halign='left', size_hint_x=None, width=150)
         username_input_nf = TextInput(text='Username')
@@ -61,47 +80,67 @@ class UserDetailsScreen(Screen):
         input_frame.add_widget(password_input_nt)
         submit_button = Button(text='Submit', font_size='20sp', pos_hint={'x': .4, 'top': 1}, size_hint=(.2, .2))
         submit_button.background_color = [0, 0, 9, 1]
-        submit_button.bind(on_press=self.go_to_search)
+        submit_button.bind(on_press=self.screen_navigation)
         space_label = Label(text='')
-        search_screen_frame.add_widget(app_logo)
-        search_screen_frame.add_widget(enter_details)
-        search_screen_frame.add_widget(input_frame)
-        search_screen_frame.add_widget(submit_button)
-        search_screen_frame.add_widget(space_label)
-        self.add_widget(search_screen_frame)
+        screen_frame.add_widget(self.app_logo)
+        screen_frame.add_widget(enter_details)
+        screen_frame.add_widget(input_frame)
+        screen_frame.add_widget(submit_button)
+        screen_frame.add_widget(space_label)
+        self.add_widget(screen_frame)
 
-    def go_to_search(self, *args):
+    def screen_navigation(self, *args):
         self.manager.current = 'search screen'
 
+    def _get_position_hint(self):
+        return{'y': 1, 'x': 0.25}
 
-class SearchScreen(Screen):
+    def _get_size_hint(self):
+        return(.5, .45)
+
+class SearchScreen(BaseScreen):
 
     def __init__(self, **kwargs):
         super(SearchScreen, self).__init__(**kwargs)
-        search_screen_frame = BoxLayout(orientation='vertical')
         search_bar_frame = FloatLayout()
-        app_logo = Image(source='StreamGuideLogo.jpg', pos_hint={'y': 1, 'x': 0.2}, size_hint=(.6, .5))
         search_input = TextInput(text='Your search', width=400, height=30, size_hint=(None, None), pos_hint={'x': .25, 'y': 0.8})
-        search_button = Button(text='Search', font_size='20sp', pos_hint={'x': 0.3, 'y': 0.5}, size_hint=(.2, .25))
-        search_button.background_color = [0, 0, 9, 1]
+        self._search_string = search_input.text
+        self._setup_search_button()
         back_button = Button(text='Back', font_size='20sp', pos_hint={'x': 0.5, 'y': 0.5}, size_hint=(.2, .25))
         back_button.background_color = [0, 0, 9, 1]
-        back_button.bind(on_press=self.go_to_user_details)
+        back_button.bind(on_press=self.screen_navigation)
         search_bar_frame.add_widget(search_input)
-        search_bar_frame.add_widget(search_button)
+        search_bar_frame.add_widget(self.search_button)
         search_bar_frame.add_widget(back_button)
-        nf_results = Label(text='Netflix:', font_size='20sp')
-        ap_results = Label(text='Amazon Prime:', font_size='20sp')
-        nt_results = Label(text='Now TV:', font_size='20sp')
-        search_screen_frame.add_widget(app_logo)
-        search_screen_frame.add_widget(search_bar_frame)
-        search_screen_frame.add_widget(nf_results)
-        search_screen_frame.add_widget(ap_results)
-        search_screen_frame.add_widget(nt_results)
-        self.add_widget(search_screen_frame)
+        netf_results = Label(text='Netflix: {}'.format(self.nf_results), font_size='20sp')
+        amap_results = Label(text='Amazon Prime:', font_size='20sp')
+        nowt_results = Label(text='Now TV:', font_size='20sp')
+        screen_frame.add_widget(self.app_logo)
+        screen_frame.add_widget(search_bar_frame)
+        screen_frame.add_widget(netf_results)
+        screen_frame.add_widget(amap_results)
+        screen_frame.add_widget(nowt_results)
+        self.add_widget(screen_frame)
 
-    def go_to_user_details(self, *args):
+    def screen_navigation(self, *args):
         self.manager.current = 'user details screen'
+
+    def search_streamers(self):
+        netflix_search = Netflix()
+        self.nf_results = netflix_search.search(self._search_string)
+        print (self.nf_results)
+
+
+    def _setup_search_button(self):
+        self.search_button = Button(text='Search', font_size='20sp', pos_hint={'x': 0.3, 'y': 0.5}, size_hint=(.2, .25))
+        self.search_button.background_color = [0, 0, 9, 1]
+        self.search_button.bind(on_press=self.search_streamers)
+
+    def _get_position_hint(self):
+        return{'y': 1, 'x': 0.2}
+
+    def _get_size_hint(self):
+        return(.6, .5)
 
 
 class MyApp(App):

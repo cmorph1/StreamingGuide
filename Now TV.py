@@ -81,8 +81,8 @@ class NowTV:
     def _get_submitbt(self):
         return '//*[@id="mount"]/div/div/div[2]/div[2]/section/div/section[1]/div/div/div/form/div[3]/button'
 
-
-nowtv_search = NowTV()
-search_str = input("What would you like to watch? \n")
-results = nowtv_search.search(search_str)
-print(results)
+if __name__ == "__main__":
+    nowtv_search = NowTV()
+    search_str = input("What would you like to watch? \n")
+    results = nowtv_search.search(search_str)
+    print(results)
