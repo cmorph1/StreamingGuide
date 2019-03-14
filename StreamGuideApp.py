@@ -103,21 +103,20 @@ class SearchScreen(BaseScreen):
     def __init__(self, **kwargs):
         super(SearchScreen, self).__init__(**kwargs)
         search_bar_frame = FloatLayout()
-        search_input = TextInput(text='Your search', width=400, height=30, size_hint=(None, None), pos_hint={'x': .25, 'y': 0.8})
-        self._search_string = search_input.text
+        self.search_input = TextInput(text='Your search', width=400, height=30, size_hint=(None, None), pos_hint={'x': .25, 'y': 0.8})
         self._setup_search_button()
         back_button = Button(text='Back', font_size='20sp', pos_hint={'x': 0.5, 'y': 0.5}, size_hint=(.2, .25))
         back_button.background_color = [0, 0, 9, 1]
         back_button.bind(on_press=self.screen_navigation)
-        search_bar_frame.add_widget(search_input)
+        search_bar_frame.add_widget(self.search_input)
         search_bar_frame.add_widget(self.search_button)
         search_bar_frame.add_widget(back_button)
-        netf_results = Label(text='Netflix: {}'.format(self.nf_results), font_size='20sp')
+        self.netf_results = Label(text=('Netflix: '), font_size='20sp')
         amap_results = Label(text='Amazon Prime:', font_size='20sp')
         nowt_results = Label(text='Now TV:', font_size='20sp')
         screen_frame.add_widget(self.app_logo)
         screen_frame.add_widget(search_bar_frame)
-        screen_frame.add_widget(netf_results)
+        screen_frame.add_widget(self.netf_results)
         screen_frame.add_widget(amap_results)
         screen_frame.add_widget(nowt_results)
         self.add_widget(screen_frame)
@@ -125,16 +124,19 @@ class SearchScreen(BaseScreen):
     def screen_navigation(self, *args):
         self.manager.current = 'user details screen'
 
-    def search_streamers(self):
-        netflix_search = Netflix()
-        self.nf_results = netflix_search.search(self._search_string)
-        print (self.nf_results)
-
-
     def _setup_search_button(self):
         self.search_button = Button(text='Search', font_size='20sp', pos_hint={'x': 0.3, 'y': 0.5}, size_hint=(.2, .25))
         self.search_button.background_color = [0, 0, 9, 1]
         self.search_button.bind(on_press=self.search_streamers)
+        self.search_button.bind(on_press=self.assign_input_text)
+
+    def search_streamers(self, *args):
+        netflix_search = Netflix()
+        self.nf_results = netflix_search.search(self._search_string)
+        self.netf_results.text = 'Netflix: {}'.format(self.nf_results)
+
+    def assign_input_text(self, *args):
+        self._search_string = self.search_input.text
 
     def _get_position_hint(self):
         return{'y': 1, 'x': 0.2}
