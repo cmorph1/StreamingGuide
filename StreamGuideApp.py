@@ -8,6 +8,9 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.screenmanager import Screen, ScreenManager
 from StreamGuideProgram import Netflix, NowTV, Amazon
+import re
+import webbrowser
+
 
 class BaseScreen(Screen):
 
@@ -15,7 +18,8 @@ class BaseScreen(Screen):
         super(BaseScreen, self).__init__(**kwargs)
         global screen_frame
         screen_frame = BoxLayout(orientation='vertical')
-        self.app_logo = Image(source='StreamGuideLogo.jpg', pos_hint=self._get_position_hint(), size_hint=self._get_size_hint())
+        self.app_logo = Image(source='StreamGuideLogo.jpg', pos_hint=self._get_position_hint(),
+                              size_hint=self._get_size_hint())
 
     def screen_navigation(self, *args):
         pass
@@ -26,6 +30,7 @@ class BaseScreen(Screen):
     def _get_size_hint(self):
         pass
 
+
 class WelcomeScreen(BaseScreen):
 
     def __init__(self, **kwargs):
@@ -33,7 +38,8 @@ class WelcomeScreen(BaseScreen):
         intro_label = Label(text='Welcome to Stream Guide! \n'
                                  'Your personal search engine for the major streaming services.\n'
                                  'Simply enter your username and password for the sites you have a subscription too,\n'
-                                 'along with what you want to watch and Stream Guide will do the leg work for you.', halign='center')
+                                 'along with what you want to watch and Stream Guide will do the leg work for you.',
+                            halign='center')
         start_button = Button(text='Start', font_size='20sp', pos_hint={'x': .4, 'top': 1}, size_hint=(.2, .15))
         start_button.background_color = [0, 0, 9, 1]
         start_button.bind(on_press=self.screen_navigation)
@@ -51,7 +57,7 @@ class WelcomeScreen(BaseScreen):
         return{'y': 1, 'x': 0}
 
     def _get_size_hint(self):
-        return(.6, .5)
+        return .6, .5
 
 
 class UserDetailsScreen(BaseScreen):
@@ -96,14 +102,16 @@ class UserDetailsScreen(BaseScreen):
         return{'y': 1, 'x': 0.25}
 
     def _get_size_hint(self):
-        return(.5, .45)
+        return .5, .45
+
 
 class SearchScreen(BaseScreen):
 
     def __init__(self, **kwargs):
         super(SearchScreen, self).__init__(**kwargs)
         search_bar_frame = FloatLayout()
-        self.search_input = TextInput(text='Your search', width=400, height=30, size_hint=(None, None), pos_hint={'x': .25, 'y': 0.8})
+        self.search_input = TextInput(text='Your search', width=400, height=30, size_hint=(None, None),
+                                      pos_hint={'x': .25, 'y': 0.8})
         self._setup_search_button()
         back_button = Button(text='Back', font_size='20sp', pos_hint={'x': 0.5, 'y': 0.5}, size_hint=(.2, .25))
         back_button.background_color = [0, 0, 9, 1]
@@ -111,14 +119,14 @@ class SearchScreen(BaseScreen):
         search_bar_frame.add_widget(self.search_input)
         search_bar_frame.add_widget(self.search_button)
         search_bar_frame.add_widget(back_button)
-        self.netf_results = Label(text=('Netflix: '), font_size='20sp')
-        amap_results = Label(text='Amazon Prime:', font_size='20sp')
-        nowt_results = Label(text='Now TV:', font_size='20sp')
+        self.netf_box = Label(text='Netflix: ', font_size='20sp')
+        amap_box = Label(text='Amazon Prime:', font_size='20sp')
+        nowt_box = Label(text='Now TV:', font_size='20sp')
         screen_frame.add_widget(self.app_logo)
         screen_frame.add_widget(search_bar_frame)
-        screen_frame.add_widget(self.netf_results)
-        screen_frame.add_widget(amap_results)
-        screen_frame.add_widget(nowt_results)
+        screen_frame.add_widget(self.netf_box)
+        screen_frame.add_widget(amap_box)
+        screen_frame.add_widget(nowt_box)
         self.add_widget(screen_frame)
 
     def screen_navigation(self, *args):
@@ -133,7 +141,9 @@ class SearchScreen(BaseScreen):
     def search_streamers(self, *args):
         netflix_search = Netflix()
         self.nf_results = netflix_search.search(self._search_string)
-        self.netf_results.text = 'Netflix: {}'.format(self.nf_results)
+        for result in self.nf_results:
+            nf_links = '<a href="{}">{}</a>'.format(result[1], result[0])
+            self.netf_box.text = 'Netflix: {}'.format(nf_links)
 
     def assign_input_text(self, *args):
         self._search_string = self.search_input.text
@@ -142,7 +152,7 @@ class SearchScreen(BaseScreen):
         return{'y': 1, 'x': 0.2}
 
     def _get_size_hint(self):
-        return(.6, .5)
+        return .6, .5
 
 
 class MyApp(App):
