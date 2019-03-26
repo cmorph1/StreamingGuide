@@ -9,6 +9,7 @@ from kivy.uix.label import Label
 from kivy.uix.screenmanager import Screen, ScreenManager
 import re
 import webbrowser
+import sqlite3
 
 
 class BaseScreen(Screen):
@@ -64,23 +65,25 @@ class UserDetailsScreen(BaseScreen):
     def __init__(self, **kwargs):
         super(UserDetailsScreen, self).__init__(**kwargs)
         input_frame = GridLayout(cols=3, rows=3, padding=10, spacing=10, row_force_default=True, row_default_height=30)
-        enter_details = Label(text='Please enter your username and password for the sites you are registered with')
-        streamer_name_nf = Label(text="Netflix:", font_size='20sp', halign='left', size_hint_x=None, width=150)
+        enter_details = Label(text='Please enter your username and password for the sites you are registered with \n'
+                                   'If you are NOT registered with a service do NOT enter any details! \n'
+                                   'If you have already registered your details on this device, no need to bother doing it again')
+        self.streamer_name_nf = Label(text="Netflix", font_size='20sp', halign='left', size_hint_x=None, width=150)
         self.username_input_nf = TextInput(text='Username')
         self.password_input_nf = TextInput(text='Password', width=100, password=True)
-        streamer_name_ap = Label(text="Amazon Prime:", font_size='20sp', halign='left', size_hint_x=None, width=150)
+        self.streamer_name_ap = Label(text="Amazon Prime", font_size='20sp', halign='left', size_hint_x=None, width=150)
         self.username_input_ap = TextInput(text='Username')
         self.password_input_ap = TextInput(text='Password', width=100, password=True)
-        streamer_name_nt = Label(text="Now TV:", font_size='20sp', halign='left', size_hint_x=None, width=150)
+        self.streamer_name_nt = Label(text="Now TV", font_size='20sp', halign='left', size_hint_x=None, width=150)
         self.username_input_nt = TextInput(text='Username')
         self.password_input_nt = TextInput(text='Password', width=100, password=True)
-        input_frame.add_widget(streamer_name_nf)
+        input_frame.add_widget(self.streamer_name_nf)
         input_frame.add_widget(self.username_input_nf)
         input_frame.add_widget(self.password_input_nf)
-        input_frame.add_widget(streamer_name_ap)
+        input_frame.add_widget(self.streamer_name_ap)
         input_frame.add_widget(self.username_input_ap)
         input_frame.add_widget(self.password_input_ap)
-        input_frame.add_widget(streamer_name_nt)
+        input_frame.add_widget(self.streamer_name_nt)
         input_frame.add_widget(self.username_input_nt)
         input_frame.add_widget(self.password_input_nt)
         self._set_up_submit_button()
@@ -96,15 +99,29 @@ class UserDetailsScreen(BaseScreen):
         self.submit_button = Button(text='Submit', font_size='20sp', pos_hint={'x': .4, 'top': 1}, size_hint=(.2, .2))
         self.submit_button.background_color = [0, 0, 9, 1]
         self.submit_button.bind(on_press=self.screen_navigation)
-        self.submit_button.bind(on_press=self.assign_input_text)
+        self.submit_button.bind(on_press=self.assign_and_save_input_text)
 
-    def assign_input_text(self, *args):
+    def assign_and_save_input_text(self, *args):
         self.netflixun = self.username_input_nf.text
         self.netflixp = self.password_input_nf.text
         self.amazonun = self.username_input_ap.text
         self.amazonp = self.password_input_ap.text
         self.nowtvun = self.username_input_nt.text
         self.nowtvp = self.password_input_nt.text
+        db = sqlite3.connect("userdetails.sqlite")
+        db.execute("CREATE TABLE IF NOT EXISTS userdetails (streamer TEXT, username VARCHAR, password VARCHAR, PRIMARY KEY (streamer))")
+        cursor = db.cursor()
+        if self.username_input_nf.text != 'Username':
+            cursor.execute("INSERT OR REPLACE INTO userdetails VALUES (?, ?, ?)", (self.streamer_name_nf.text, self.netflixun, self.netflixp))
+            cursor.connection.commit()
+        if self.username_input_ap.text != 'Username':
+            cursor.execute("INSERT OR REPLACE INTO userdetails VALUES (?, ?, ?)", (self.streamer_name_ap.text, self.amazonun, self.amazonp))
+            cursor.connection.commit()
+        if self.username_input_nt.text != 'Username':
+            cursor.execute("INSERT OR REPLACE INTO userdetails VALUES (?, ?, ?)", (self.streamer_name_nt.text, self.nowtvun, self.nowtvp))
+            cursor.connection.commit()
+        cursor.close()
+        db.close()
 
     def screen_navigation(self, *args):
         self.manager.current = 'search screen'
@@ -151,8 +168,6 @@ class SearchScreen(BaseScreen):
         screen_frame.add_widget(self.ntv_box)
         self.add_widget(screen_frame)
 
-    from StreamGuideProgram import Netflix, NowTV, Amazon
-
     def screen_navigation(self, *args):
         self.manager.current = 'user details screen'
 
@@ -170,7 +185,7 @@ class SearchScreen(BaseScreen):
         self.netf_results = netflix_search.search(self._search_string)
         for result in self.netf_results:
             results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
-            results_label.bind(on_ref_press=lambda self, x:webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+            results_label.bind(on_ref_press=lambda self, x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
             self.netf_results_frame.add_widget(results_label)
         self.netf_box.add_widget(self.netf_results_frame)
 
@@ -179,9 +194,13 @@ class SearchScreen(BaseScreen):
         nowtv_search = NowTV()
         self.ntv_results = nowtv_search.search(self._search_string)
         for result in self.ntv_results:
-            results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
-            results_label.bind(on_ref_press=lambda self, x:webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
-            self.ntv_results_frame.add_widget(results_label)
+            try:
+                results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
+                results_label.bind(on_ref_press=lambda self, x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+                self.ntv_results_frame.add_widget(results_label)
+            except IndexError:
+                results_label = Label(text=self.ntv_results)
+                self.ntv_results_frame.add_widget(results_label)
         self.ntv_box.add_widget(self.ntv_results_frame)
 
     def search_amazon(self, *args):
@@ -190,7 +209,7 @@ class SearchScreen(BaseScreen):
         self.amap_results = amazon_search.search(self._search_string)
         for result in self.amap_results:
             results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
-            results_label.bind(on_ref_press=lambda self, x:webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+            results_label.bind(on_ref_press=lambda self, x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
             self.amap_results_frame.add_widget(results_label)
         self.amap_box.add_widget(self.amap_results_frame)
 

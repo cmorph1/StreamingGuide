@@ -4,9 +4,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import NoSuchElementException
 import Settings as S
 import time
-
+import sqlite3
 
 class StreamGuide:
 
@@ -60,7 +61,10 @@ class Amazon(StreamGuide):
         super().__init__()
 
     def _navigate_to_prime(self):
-        useraccount = driver.find_element_by_id("nav-link-yourAccount")
+        try:
+            useraccount = driver.find_element_by_id("nav-link-yourAccount")
+        except NoSuchElementException:
+            useraccount = driver.find_element_by_id("nav-link-accountList")
         hover = ActionChains(driver).move_to_element(useraccount)
         hover.perform()
         userprime = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-flyout-yourAccount"]/div[2]/a[15]')))
@@ -99,13 +103,20 @@ class Amazon(StreamGuide):
         return "email"
 
     def _get_username(self):
-        return S.AMAZONUN
+        conn = sqlite3.connect("userdetails.sqlite")
+        for streamer, username, password in conn.execute("SELECT * FROM userdetails WHERE streamer = 'Amazon Prime'"):
+            return username
+        conn.close()
 
     def _get_passinput(self):
         return "password"
 
     def _get_userpass(self):
-        return S.AMAZONP
+        conn = sqlite3.connect("userdetails.sqlite")
+        for streamer, username, password in conn.execute("SELECT * FROM userdetails WHERE streamer = 'Amazon Prime'"):
+            print(streamer)
+            return password
+        conn.close()
 
     def _get_submitbt(self):
         return '//*[@id="signInSubmit"]'
@@ -160,13 +171,22 @@ class Netflix(StreamGuide):
         return "userLoginId"
 
     def _get_username(self):
-        return S.NETFLIXUN
+        conn = sqlite3.connect("userdetails.sqlite")
+        for streamer, username, password in conn.execute("SELECT * FROM userdetails WHERE streamer = 'Netflix'"):
+            print(streamer)
+            return username
+        conn.close()
 
     def _get_passinput(self):
         return "password"
 
     def _get_userpass(self):
-        return S.NETFLIXP
+        conn = sqlite3.connect("userdetails.sqlite")
+        cursed = conn.cursor()
+        for streamer, username, password in cursed.execute("SELECT * FROM userdetails WHERE streamer = 'Netflix'"):
+            return password
+        cursed.close()
+        conn.close()
 
     def _get_submitbt(self):
         return '//*[@id="appMountPoint"]/div/div[3]/div/div/div[1]/form/button'
@@ -219,13 +239,21 @@ class NowTV(StreamGuide):
         return "userIdentifier"
 
     def _get_username(self):
-        return S.NOWTVUN
+        conn = sqlite3.connect("userdetails.sqlite")
+        for streamer, username, password in conn.execute("SELECT * FROM userdetails WHERE streamer = 'Now TV'"):
+            print(streamer)
+            return username
+        conn.close()
 
     def _get_passinput(self):
         return "password"
 
     def _get_userpass(self):
-        return S.NOWTVP
+        conn = sqlite3.connect("userdetails.sqlite")
+        for streamer, username, password in conn.execute("SELECT * FROM userdetails WHERE streamer = 'Now TV'"):
+            print(streamer)
+            return password
+        conn.close()
 
     def _get_submitbt(self):
         return '//*[@id="mount"]/div/div/div[2]/div[2]/section/div/section[1]/div/div/div/form/div[3]/button'
