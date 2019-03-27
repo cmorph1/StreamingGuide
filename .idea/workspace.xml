@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2baffe26-87b2-4819-ade2-41500175f013" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StreamGuideApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/StreamGuideApp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Amazon.py" beforeDir="false" afterPath="$PROJECT_DIR$/Amazon.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StreamGuideProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/StreamGuideProgram.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,20 +15,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StreamGuideProgram.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="226" column="19" lean-forward="true" selection-start-line="226" selection-start-column="19" selection-end-line="226" selection-end-column="101" />
+            <state relative-caret-position="102">
+              <caret line="6" column="61" selection-start-line="6" selection-start-column="61" selection-end-line="6" selection-end-column="61" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <marker date="1553639898281" expanded="true" signature="426:432" ph="..." />
-                <marker date="1553639898281" expanded="true" signature="1216:1222" ph="..." />
-                <marker date="1553639898281" expanded="true" signature="1217:1222" ph="..." />
-                <marker date="1553639898281" expanded="true" signature="1241:1260" ph="..." />
-                <marker date="1553639898281" expanded="true" signature="3058:3067" ph="..." />
-                <marker date="1553639898281" expanded="true" signature="6028:6037" ph="..." />
-                <marker date="1553639898281" expanded="true" signature="6909:9440" ph="..." />
+                <marker date="1553722214041" expanded="true" signature="405:411" ph="..." />
+                <marker date="1553722214041" expanded="true" signature="1195:1201" ph="..." />
+                <marker date="1553722214041" expanded="true" signature="1196:1201" ph="..." />
+                <marker date="1553722214041" expanded="true" signature="1220:1239" ph="..." />
+                <marker date="1553722214041" expanded="true" signature="3341:3350" ph="..." />
+                <marker date="1553722214041" expanded="true" signature="6283:6292" ph="..." />
+                <marker date="1553722214041" expanded="true" signature="7136:9611" ph="..." />
               </folding>
             </state>
           </provider>
@@ -38,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StreamGuideApp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+            <state relative-caret-position="3009">
+              <caret line="229" column="61" lean-forward="true" selection-start-line="229" selection-start-column="61" selection-end-line="229" selection-end-column="61" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -50,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/creatinghref.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="107" column="50" lean-forward="true" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+            <state relative-caret-position="270">
+              <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -59,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            <state relative-caret-position="85">
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -98,6 +96,7 @@
       <find>the legal bit</find>
       <find>cap</find>
       <find>WelcomeScreen</find>
+      <find>print</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\cmorp\PythonPrograms\Streaming_Guide</dir>
@@ -116,7 +115,6 @@
         <option value="$PROJECT_DIR$/Scraper.py" />
         <option value="$PROJECT_DIR$/Stream_Guide.py" />
         <option value="$PROJECT_DIR$/Netflix.py" />
-        <option value="$PROJECT_DIR$/Amazon.py" />
         <option value="$PROJECT_DIR$/Now TV.py" />
         <option value="$PROJECT_DIR$/Settings.py" />
         <option value="$PROJECT_DIR$/Kivy Test.py" />
@@ -125,16 +123,17 @@
         <option value="$PROJECT_DIR$/creating href.py" />
         <option value="$PROJECT_DIR$/userdatabase.py" />
         <option value="$PROJECT_DIR$/creatinghref.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/StreamGuideProgram.py" />
         <option value="$PROJECT_DIR$/StreamGuideApp.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Amazon.py" />
+        <option value="$PROJECT_DIR$/StreamGuideProgram.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="950" />
-    <option name="width" value="980" />
-    <option name="height" value="1090" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -209,7 +208,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553641262600" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553721752757" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/env" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -229,7 +228,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.StreamGuideApp">
-    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Amazon" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Streaming_Guide" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -241,7 +240,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Amazon.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -337,10 +336,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.StreamGuideApp" />
+        <item itemvalue="Python.Amazon" />
+        <item itemvalue="Python.StreamGuideProgram" />
         <item itemvalue="Python.userdatabase" />
         <item itemvalue="Python.creating href" />
-        <item itemvalue="Python.StreamGuideProgram" />
-        <item itemvalue="Python.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -370,7 +369,7 @@
     <frame x="-7" y="-7" width="1550" height="878" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16040269" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16040269" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -379,7 +378,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297587" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4986577" visible="true" weight="0.31903484" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4986577" visible="true" weight="0.31903484" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -511,13 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -586,33 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StreamGuideProgram.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="226" column="19" lean-forward="true" selection-start-line="226" selection-start-column="19" selection-end-line="226" selection-end-column="101" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1553639898281" expanded="true" signature="426:432" ph="..." />
-            <marker date="1553639898281" expanded="true" signature="1216:1222" ph="..." />
-            <marker date="1553639898281" expanded="true" signature="1217:1222" ph="..." />
-            <marker date="1553639898281" expanded="true" signature="1241:1260" ph="..." />
-            <marker date="1553639898281" expanded="true" signature="3058:3067" ph="..." />
-            <marker date="1553639898281" expanded="true" signature="6028:6037" ph="..." />
-            <marker date="1553639898281" expanded="true" signature="6909:9440" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StreamGuideApp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -620,20 +585,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userdetails.sqlite">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/creatinghref.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="107" column="50" lean-forward="true" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+        <state relative-caret-position="270">
+          <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/selenium/webdriver/support/wait.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="55" selection-start-line="55" selection-end-line="63" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StreamGuideApp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3009">
+          <caret line="229" column="61" lean-forward="true" selection-start-line="229" selection-start-column="61" selection-end-line="229" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StreamGuideProgram.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <caret line="6" column="61" selection-start-line="6" selection-start-column="61" selection-end-line="6" selection-end-column="61" />
+          <folding>
+            <marker date="1553722214041" expanded="true" signature="405:411" ph="..." />
+            <marker date="1553722214041" expanded="true" signature="1195:1201" ph="..." />
+            <marker date="1553722214041" expanded="true" signature="1196:1201" ph="..." />
+            <marker date="1553722214041" expanded="true" signature="1220:1239" ph="..." />
+            <marker date="1553722214041" expanded="true" signature="3341:3350" ph="..." />
+            <marker date="1553722214041" expanded="true" signature="6283:6292" ph="..." />
+            <marker date="1553722214041" expanded="true" signature="7136:9611" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 import Settings as S
+from selenium.common.exceptions import NoSuchElementException
 import time
 
 
@@ -29,11 +30,18 @@ class Amazon:
         driver.find_element_by_xpath(self._get_submitbt()).click()
 
     def _navigate_to_prime(self):
-        useraccount = driver.find_element_by_id("nav-link-yourAccount")
-        hover = ActionChains(driver).move_to_element(useraccount)
-        hover.perform()
-        userprime = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-flyout-yourAccount"]/div[2]/a[15]')))
-        userprime.click()
+        try:
+            useraccount = driver.find_element_by_id("nav-link-yourAccount")
+            hover = ActionChains(driver).move_to_element(useraccount)
+            hover.perform()
+            userprime = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-flyout-yourAccount"]/div[2]/a[15]')))
+            userprime.click()
+        except NoSuchElementException:
+            useraccount = driver.find_element_by_id("nav-link-accountList")
+            hover = ActionChains(driver).move_to_element(useraccount)
+            hover.perform()
+            userprime = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-al-your-account"]/a[15]')))
+            userprime.click()
 
     def _search_prime(self, search: str):
         searchbox = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="twotabsearchtextbox"]')))
@@ -46,14 +54,14 @@ class Amazon:
 
     def _build_list(self, search: str):
         soup = self._search_prime(search)
-        finds = soup.find_all("a", class_="a-link-normal a-text-normal")
+        finds = soup.find_all("div", class_="a-section aok-relative s-image-fixed-height")
         links_and_titles = []
         for films in finds:
             try:
-                links_and_titles.append(((films.find_next(string=True)), (films.find_next("a")["href"])))
+                links_and_titles.append(((films.find_next("img")["alt"]), "www.amazon.co.uk" + (films.find_next("a")["href"])))
             except:
                 continue
-        return links_and_titles[:20:2]
+        return links_and_titles
 
     def search(self, search: str):
         self.login_to_amazon()

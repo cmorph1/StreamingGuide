@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import NoSuchElementException
-import Settings as S
 import time
 import sqlite3
 
@@ -63,12 +62,16 @@ class Amazon(StreamGuide):
     def _navigate_to_prime(self):
         try:
             useraccount = driver.find_element_by_id("nav-link-yourAccount")
+            hover = ActionChains(driver).move_to_element(useraccount)
+            hover.perform()
+            userprime = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-flyout-yourAccount"]/div[2]/a[15]')))
+            userprime.click()
         except NoSuchElementException:
             useraccount = driver.find_element_by_id("nav-link-accountList")
-        hover = ActionChains(driver).move_to_element(useraccount)
-        hover.perform()
-        userprime = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-flyout-yourAccount"]/div[2]/a[15]')))
-        userprime.click()
+            hover = ActionChains(driver).move_to_element(useraccount)
+            hover.perform()
+            userprime = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-al-your-account"]/a[15]')))
+            userprime.click()
 
     def _search_prime(self, search: str):
         searchbox = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="twotabsearchtextbox"]')))
@@ -81,14 +84,14 @@ class Amazon(StreamGuide):
 
     def _build_list(self, search: str):
         soup = self._search_prime(search)
-        finds = soup.find_all("a", class_="a-link-normal a-text-normal")
+        finds = soup.find_all("div", class_="a-section aok-relative s-image-fixed-height")
         links_and_titles = []
         for films in finds:
             try:
-                links_and_titles.append(((films.find_next(string=True)), (films.find_next("a")["href"])))
+                links_and_titles.append(((films.find_next("img")["alt"]), "www.amazon.co.uk" + (films.find_next("a")["href"])))
             except:
                 continue
-        return links_and_titles[:20:2]
+        return links_and_titles[0:10]
 
     def search(self, search: str) -> list:
         super().search(search)
@@ -114,7 +117,6 @@ class Amazon(StreamGuide):
     def _get_userpass(self):
         conn = sqlite3.connect("userdetails.sqlite")
         for streamer, username, password in conn.execute("SELECT * FROM userdetails WHERE streamer = 'Amazon Prime'"):
-            print(streamer)
             return password
         conn.close()
 
@@ -173,7 +175,6 @@ class Netflix(StreamGuide):
     def _get_username(self):
         conn = sqlite3.connect("userdetails.sqlite")
         for streamer, username, password in conn.execute("SELECT * FROM userdetails WHERE streamer = 'Netflix'"):
-            print(streamer)
             return username
         conn.close()
 
@@ -241,7 +242,6 @@ class NowTV(StreamGuide):
     def _get_username(self):
         conn = sqlite3.connect("userdetails.sqlite")
         for streamer, username, password in conn.execute("SELECT * FROM userdetails WHERE streamer = 'Now TV'"):
-            print(streamer)
             return username
         conn.close()
 
@@ -251,7 +251,6 @@ class NowTV(StreamGuide):
     def _get_userpass(self):
         conn = sqlite3.connect("userdetails.sqlite")
         for streamer, username, password in conn.execute("SELECT * FROM userdetails WHERE streamer = 'Now TV'"):
-            print(streamer)
             return password
         conn.close()
 
