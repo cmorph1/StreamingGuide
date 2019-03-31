@@ -1,12 +1,14 @@
 from bs4 import BeautifulSoup as BS
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import NoSuchElementException
 import time
 import sqlite3
+
 
 class StreamGuide:
 
@@ -15,8 +17,10 @@ class StreamGuide:
         self._wait = None
 
     def login(self):
+        options = Options()
+        options.headless = True
         global driver
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=options)
         global wait
         wait = WebDriverWait(driver, 30)
         driver.get(self._get_url())

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2baffe26-87b2-4819-ade2-41500175f013" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StreamGuideApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/StreamGuideApp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creatinghref.py" beforeDir="false" afterPath="$PROJECT_DIR$/creatinghref.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StreamGuideProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/StreamGuideProgram.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,26 +13,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StreamGuideProgram.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3859">
-              <caret line="227" column="101" lean-forward="true" selection-start-line="227" selection-start-column="19" selection-end-line="227" selection-end-column="101" />
+            <state relative-caret-position="169">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1553722214041" expanded="true" signature="405:411" ph="..." />
-                <marker date="1553722214041" expanded="true" signature="1195:1201" ph="..." />
-                <marker date="1553722214041" expanded="true" signature="1196:1201" ph="..." />
-                <marker date="1553722214041" expanded="true" signature="1220:1239" ph="..." />
-                <marker date="1553722214041" expanded="true" signature="3341:3350" ph="..." />
-                <marker date="1553722214041" expanded="true" signature="6283:6292" ph="..." />
-                <marker date="1553722214041" expanded="true" signature="7136:9611" ph="..." />
+                <marker date="1554050179556" expanded="true" signature="460:466" ph="..." />
+                <marker date="1554050179556" expanded="true" signature="1325:1331" ph="..." />
+                <marker date="1554050179556" expanded="true" signature="1326:1331" ph="..." />
+                <marker date="1554050179556" expanded="true" signature="1350:1369" ph="..." />
+                <marker date="1554050179556" expanded="true" signature="3471:3480" ph="..." />
+                <marker date="1554050179556" expanded="true" signature="6413:6422" ph="..." />
+                <marker date="1554050179556" expanded="true" signature="7266:9741" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StreamGuideApp.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="5100">
@@ -134,14 +131,14 @@
         <option value="$PROJECT_DIR$/creating href.py" />
         <option value="$PROJECT_DIR$/userdatabase.py" />
         <option value="$PROJECT_DIR$/Amazon.py" />
-        <option value="$PROJECT_DIR$/StreamGuideProgram.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/creatinghref.py" />
         <option value="$PROJECT_DIR$/StreamGuideApp.py" />
+        <option value="$PROJECT_DIR$/StreamGuideProgram.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1090" />
@@ -219,7 +216,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554049064900" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554050102790" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/env" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -389,7 +386,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297587" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4986577" visible="true" weight="0.31903484" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4986577" weight="0.31903484" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -602,23 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StreamGuideProgram.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3859">
-          <caret line="227" column="101" lean-forward="true" selection-start-line="227" selection-start-column="19" selection-end-line="227" selection-end-column="101" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1553722214041" expanded="true" signature="405:411" ph="..." />
-            <marker date="1553722214041" expanded="true" signature="1195:1201" ph="..." />
-            <marker date="1553722214041" expanded="true" signature="1196:1201" ph="..." />
-            <marker date="1553722214041" expanded="true" signature="1220:1239" ph="..." />
-            <marker date="1553722214041" expanded="true" signature="3341:3350" ph="..." />
-            <marker date="1553722214041" expanded="true" signature="6283:6292" ph="..." />
-            <marker date="1553722214041" expanded="true" signature="7136:9611" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -642,6 +622,23 @@
           <caret line="300" lean-forward="true" selection-start-line="300" selection-end-line="300" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StreamGuideProgram.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1554050179556" expanded="true" signature="460:466" ph="..." />
+            <marker date="1554050179556" expanded="true" signature="1325:1331" ph="..." />
+            <marker date="1554050179556" expanded="true" signature="1326:1331" ph="..." />
+            <marker date="1554050179556" expanded="true" signature="1350:1369" ph="..." />
+            <marker date="1554050179556" expanded="true" signature="3471:3480" ph="..." />
+            <marker date="1554050179556" expanded="true" signature="6413:6422" ph="..." />
+            <marker date="1554050179556" expanded="true" signature="7266:9741" ph="..." />
           </folding>
         </state>
       </provider>
