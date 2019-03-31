@@ -12,6 +12,7 @@ import webbrowser
 import sqlite3
 
 
+# Basic screen class
 class BaseScreen(Screen):
 
     def __init__(self, **kwargs):
@@ -31,6 +32,7 @@ class BaseScreen(Screen):
         pass
 
 
+# Welcome screen - starts naviagetion to functional screen
 class WelcomeScreen(BaseScreen):
 
     def __init__(self, **kwargs):
@@ -60,14 +62,22 @@ class WelcomeScreen(BaseScreen):
         return .6, .5
 
 
+# Screen for entering user details
 class UserDetailsScreen(BaseScreen):
 
     def __init__(self, **kwargs):
         super(UserDetailsScreen, self).__init__(**kwargs)
+        self.netflixun = None
+        self.netflixp = None
+        self.amazonun = None
+        self.amazonp = None
+        self.nowtvun = None
+        self.nowtvp = None
         input_frame = GridLayout(cols=3, rows=3, padding=10, spacing=10, row_force_default=True, row_default_height=30)
         enter_details = Label(text='Please enter your username and password for the sites you are registered with \n'
                                    'If you are NOT registered with a service do NOT enter any details! \n'
-                                   'If you have already registered your details on this device, no need to bother doing it again')
+                                   'If you have already registered your details on this device, '
+                                   'no need to bother doing it again')
         self.streamer_name_nf = Label(text="Netflix", font_size='20sp', halign='left', size_hint_x=None, width=150)
         self.username_input_nf = TextInput(text='Username')
         self.password_input_nf = TextInput(text='Password', width=100, password=True)
@@ -95,12 +105,14 @@ class UserDetailsScreen(BaseScreen):
         screen_frame.add_widget(space_label)
         self.add_widget(screen_frame)
 
+    # Submit button which stores user details and moves user to the search screen
     def _set_up_submit_button(self):
         self.submit_button = Button(text='Submit', font_size='20sp', pos_hint={'x': .4, 'top': 1}, size_hint=(.2, .2))
         self.submit_button.background_color = [0, 0, 9, 1]
         self.submit_button.bind(on_press=self.screen_navigation)
         self.submit_button.bind(on_press=self.assign_and_save_input_text)
 
+    # Assigns the users input to a variable so it can be called on and stored in an Sqlite database
     def assign_and_save_input_text(self, *args):
         self.netflixun = self.username_input_nf.text
         self.netflixp = self.password_input_nf.text
@@ -109,16 +121,20 @@ class UserDetailsScreen(BaseScreen):
         self.nowtvun = self.username_input_nt.text
         self.nowtvp = self.password_input_nt.text
         db = sqlite3.connect("userdetails.sqlite")
-        db.execute("CREATE TABLE IF NOT EXISTS userdetails (streamer TEXT, username VARCHAR, password VARCHAR, PRIMARY KEY (streamer))")
+        db.execute("CREATE TABLE IF NOT EXISTS userdetails "
+                   "(streamer TEXT, username VARCHAR, password VARCHAR, PRIMARY KEY (streamer))")
         cursor = db.cursor()
         if self.username_input_nf.text != 'Username':
-            cursor.execute("INSERT OR REPLACE INTO userdetails VALUES (?, ?, ?)", (self.streamer_name_nf.text, self.netflixun, self.netflixp))
+            cursor.execute("INSERT OR REPLACE INTO userdetails VALUES "
+                           "(?, ?, ?)", (self.streamer_name_nf.text, self.netflixun, self.netflixp))
             cursor.connection.commit()
         if self.username_input_ap.text != 'Username':
-            cursor.execute("INSERT OR REPLACE INTO userdetails VALUES (?, ?, ?)", (self.streamer_name_ap.text, self.amazonun, self.amazonp))
+            cursor.execute("INSERT OR REPLACE INTO userdetails VALUES "
+                           "(?, ?, ?)", (self.streamer_name_ap.text, self.amazonun, self.amazonp))
             cursor.connection.commit()
         if self.username_input_nt.text != 'Username':
-            cursor.execute("INSERT OR REPLACE INTO userdetails VALUES (?, ?, ?)", (self.streamer_name_nt.text, self.nowtvun, self.nowtvp))
+            cursor.execute("INSERT OR REPLACE INTO userdetails VALUES "
+                           "(?, ?, ?)", (self.streamer_name_nt.text, self.nowtvun, self.nowtvp))
             cursor.connection.commit()
         cursor.close()
         db.close()
@@ -133,18 +149,23 @@ class UserDetailsScreen(BaseScreen):
         return .5, .45
 
 
+# This is for searching and viewing results
 class SearchScreen(BaseScreen):
 
     def __init__(self, **kwargs):
         super(SearchScreen, self).__init__(**kwargs)
         top_frame = BoxLayout(orientation='vertical')
         search_bar_frame = FloatLayout()
+        self.netf_results_frame = None
+        self.amap_results_frame = None
+        self.ntv_results_frame = None
+        self.netf_results = None
+        self.ntv_results = None
+        self.amap_results = None
+        self._search_string = None
         self.netf_box = BoxLayout(orientation='vertical')
-        self.netf_results_frame = GridLayout(cols=2, rows=5, row_force_default=True, row_default_height=15)
         self.amap_box = BoxLayout(orientation='vertical')
-        self.amap_results_frame = GridLayout(cols=2, rows=5, row_force_default=True, row_default_height=15)
         self.ntv_box = BoxLayout(orientation='vertical')
-        self.ntv_results_frame = GridLayout(cols=2, rows=5, row_force_default=True, row_default_height=15)
         self.search_input = TextInput(text='Your search', width=400, height=30, size_hint=(None, None),
                                       pos_hint={'x': .25, 'y': 0.8})
         self._setup_search_button()
@@ -168,44 +189,79 @@ class SearchScreen(BaseScreen):
         screen_frame.add_widget(self.ntv_box)
         self.add_widget(screen_frame)
 
-    def screen_navigation(self, *args):
-        self.manager.current = 'user details screen'
-
+    # Button used to search and reset previous search
     def _setup_search_button(self):
         self.search_button = Button(text='Search', font_size='20sp', pos_hint={'x': 0.3, 'y': 0.5}, size_hint=(.2, .25))
         self.search_button.background_color = [0, 0, 9, 1]
-        self.search_button.bind(on_press=self.search_netflix)
-        self.search_button.bind(on_press=self.search_nowtv)
-        self.search_button.bind(on_press=self.search_amazon)
         self.search_button.bind(on_press=self.assign_input_text)
+        self.search_button.bind(on_press=self.clear_search)
+        self.search_button.bind(on_release=self.check_user_details)
 
+    # This function clears the previous search, so the new links can be added
+    def clear_search(self, *args):
+        if self.netf_results_frame:
+            self.netf_box.remove_widget(self.netf_results_frame)
+        if self.ntv_results_frame:
+            self.ntv_box.remove_widget(self.ntv_results_frame)
+        if self.amap_results_frame:
+            self.amap_box.remove_widget(self.amap_results_frame)
+
+    # This enures that only sites where the user has entered details, are searched
+    def check_user_details(self, *args):
+        db = sqlite3.connect("userdetails.sqlite")
+        cursor = db.cursor()
+        cursor.execute("SELECT COUNT(*) FROM userdetails WHERE streamer = 'Netflix'")
+        nf_details_check = cursor.fetchone()[0]
+        if nf_details_check != 0:
+            self.search_netflix()
+        cursor.execute("SELECT COUNT(*) FROM userdetails WHERE streamer = 'Now TV'")
+        ntv_details_check = cursor.fetchone()[0]
+        if ntv_details_check != 0:
+            self.search_nowtv()
+        cursor.execute("SELECT COUNT(*) FROM userdetails WHERE streamer = 'Amazon Prime'")
+        ap_details_check = cursor.fetchone()[0]
+        if ap_details_check != 0:
+            self.search_amazon()
+
+    # Function to search Netflix
     def search_netflix(self, *args):
         from StreamGuideProgram import Netflix
+        self.netf_results_frame = GridLayout(cols=2, rows=5, row_force_default=True, row_default_height=15)
         netflix_search = Netflix()
         self.netf_results = netflix_search.search(self._search_string)
-        for result in self.netf_results:
-            results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
-            results_label.bind(on_ref_press=lambda self, x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+        try:
+            for result in self.netf_results:
+                results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
+                results_label.bind(on_ref_press=lambda self, x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+                self.netf_results_frame.add_widget(results_label)
+        except TypeError:
+            results_label = Label(text="Either your search was incorrect or "
+                                       "Netflix doesn't have what you are looking for")
             self.netf_results_frame.add_widget(results_label)
         self.netf_box.add_widget(self.netf_results_frame)
 
+    # Function to search Now TV
     def search_nowtv(self, *args):
         from StreamGuideProgram import NowTV
         nowtv_search = NowTV()
+        self.ntv_results_frame = GridLayout(cols=2, rows=5, row_force_default=True, row_default_height=15)
         self.ntv_results = nowtv_search.search(self._search_string)
-        for result in self.ntv_results:
-            try:
+        try:
+            for result in self.ntv_results:
                 results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
-                results_label.bind(on_ref_press=lambda self, x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+                results_label.bind(on_ref_press=lambda self, x: webbrowser.open
+                (re.search('=(.*?)]', self.text).group(1)))
                 self.ntv_results_frame.add_widget(results_label)
-            except IndexError:
-                results_label = Label(text=self.ntv_results)
-                self.ntv_results_frame.add_widget(results_label)
+        except IndexError:
+            results_label = Label(text=self.ntv_results)
+            self.ntv_results_frame.add_widget(results_label)
         self.ntv_box.add_widget(self.ntv_results_frame)
 
+    # Function to search Amazon Prime
     def search_amazon(self, *args):
         from StreamGuideProgram import Amazon
         amazon_search = Amazon()
+        self.amap_results_frame = GridLayout(cols=2, rows=5, row_force_default=True, row_default_height=15)
         self.amap_results = amazon_search.search(self._search_string)
         for result in self.amap_results:
             results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
@@ -213,8 +269,12 @@ class SearchScreen(BaseScreen):
             self.amap_results_frame.add_widget(results_label)
         self.amap_box.add_widget(self.amap_results_frame)
 
+    # Assigns the users search to a variable to be used in the searching functions
     def assign_input_text(self, *args):
         self._search_string = self.search_input.text
+
+    def screen_navigation(self, *args):
+        self.manager.current = 'user details screen'
 
     def _get_position_hint(self):
         return{'y': 1, 'x': 0.055}
