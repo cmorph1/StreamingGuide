@@ -17,10 +17,11 @@ class StreamGuide:
         self._wait = None
 
     def login(self):
-        options = Options()
-        options.headless = True
+        # options = Options()
+        # options.headless = True
         global driver
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome()
+            # (options=options)
         global wait
         wait = WebDriverWait(driver, 30)
         driver.get(self._get_url())
@@ -68,7 +69,8 @@ class Amazon(StreamGuide):
             useraccount = driver.find_element_by_id("nav-link-yourAccount")
             hover = ActionChains(driver).move_to_element(useraccount)
             hover.perform()
-            userprime = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-flyout-yourAccount"]/div[2]/a[15]')))
+            userprime = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                   '//*[@id="nav-flyout-yourAccount"]/div[2]/a[15]')))
             userprime.click()
         except NoSuchElementException:
             useraccount = driver.find_element_by_id("nav-link-accountList")
@@ -92,7 +94,8 @@ class Amazon(StreamGuide):
         links_and_titles = []
         for films in finds:
             try:
-                links_and_titles.append(((films.find_next("img")["alt"]), "www.amazon.co.uk" + (films.find_next("a")["href"])))
+                links_and_titles.append(((films.find_next("img")["alt"]),
+                                         "www.amazon.co.uk" + (films.find_next("a")["href"])))
             except:
                 continue
         return links_and_titles[0:10]
@@ -134,7 +137,8 @@ class Netflix(StreamGuide):
         super().__init__()
 
     def _navigate_to_profile(self):
-        yourprofile = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="appMountPoint"]/div/div/div/div/div[2]/div/div/ul/li[1]/div/a/div/div')))
+        yourprofile = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                 '//*[@id="appMountPoint"]/div/div/div/div/div[2]/div/div/ul/li[1]/div/a/div/div')))
         yourprofile.click()
 
     def _search_netflix(self, search: str):
@@ -203,7 +207,8 @@ class NowTV(StreamGuide):
         super().__init__()
 
     def _navigate_to_nowtv(self):
-        yourprofile = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="ib-section-header-region"]/div/div[2]/div/div[2]/nav/ul/li[7]/div/a')))
+        yourprofile = wait.until(ec.visibility_of_element_located((By.XPATH,
+                                 '//*[@id="ib-section-header-region"]/div/div[2]/div/div[2]/nav/ul/li[7]/div/a')))
         yourprofile.click()
 
     def _search_nowtv(self, search: str):
@@ -260,6 +265,7 @@ class NowTV(StreamGuide):
 
     def _get_submitbt(self):
         return '//*[@id="mount"]/div/div/div[2]/div[2]/section/div/section[1]/div/div/div/form/div[3]/button'
+
 
 if __name__ == "__main__":
     amazon_search = Amazon()

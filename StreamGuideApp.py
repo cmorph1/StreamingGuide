@@ -232,7 +232,8 @@ class SearchScreen(BaseScreen):
         try:
             for result in self.netf_results:
                 results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
-                results_label.bind(on_ref_press=lambda self, x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+                results_label.bind(on_ref_press=lambda self,
+                                   x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
                 self.netf_results_frame.add_widget(results_label)
         except TypeError:
             results_label = Label(text="Either your search was incorrect or "
@@ -249,8 +250,8 @@ class SearchScreen(BaseScreen):
         try:
             for result in self.ntv_results:
                 results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
-                results_label.bind(on_ref_press=lambda self, x: webbrowser.open
-                (re.search('=(.*?)]', self.text).group(1)))
+                results_label.bind(on_ref_press=lambda self,
+                                   x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
                 self.ntv_results_frame.add_widget(results_label)
         except IndexError:
             results_label = Label(text=self.ntv_results)
@@ -265,11 +266,12 @@ class SearchScreen(BaseScreen):
         self.amap_results = amazon_search.search(self._search_string)
         for result in self.amap_results:
             results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
-            results_label.bind(on_ref_press=lambda self, x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+            results_label.bind(on_ref_press=lambda self,
+                               x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
             self.amap_results_frame.add_widget(results_label)
         self.amap_box.add_widget(self.amap_results_frame)
 
-    # Assigns the users search to a variable to be used in the searching functions
+    # Assigns the users search to a variable to be used in the searching Methonds
     def assign_input_text(self, *args):
         self._search_string = self.search_input.text
 
