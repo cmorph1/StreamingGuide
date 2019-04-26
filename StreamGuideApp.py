@@ -206,7 +206,7 @@ class SearchScreen(BaseScreen):
         if self.amap_results_frame:
             self.amap_box.remove_widget(self.amap_results_frame)
 
-    # This enures that only sites where the user has entered details, are searched
+    # This ensures that only sites, where the user has entered login details are searched
     def check_user_details(self, *args):
         db = sqlite3.connect("userdetails.sqlite")
         cursor = db.cursor()

@@ -3,3 +3,4 @@ StreamGuideVE/
 __pycache__/
 creatinghref.py
 userdetails.sqlite
+Multi-threadedSG.py

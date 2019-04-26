@@ -104,6 +104,7 @@ class Amazon(StreamGuide):
         super().search(search)
         self._navigate_to_prime()
         result = self._build_list(search)
+        driver.quit()
         return result
 
     def _get_url(self):
@@ -172,6 +173,7 @@ class Netflix(StreamGuide):
         super().search(search)
         self._navigate_to_profile()
         result = self._build_list(search)
+        driver.quit()
         return result
 
     def _get_url(self):
@@ -240,6 +242,7 @@ class NowTV(StreamGuide):
         super().search(search)
         self._navigate_to_nowtv()
         result = self._build_list(search)
+        driver.quit()
         return result
 
     def _get_url(self):
