@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import NoSuchElementException
+from threading import Thread
 import time
 import sqlite3
 
@@ -17,21 +18,18 @@ class StreamGuide:
         self._wait = None
 
     def login(self):
-        # options = Options()
-        # options.headless = True
-        global driver
-        driver = webdriver.Chrome()
-            # (options=options)
-        global wait
-        wait = WebDriverWait(driver, 30)
-        driver.get(self._get_url())
-        userinput = wait.until(ec.visibility_of_element_located((By.NAME, self._get_userinput())))
+        options = Options()
+        options.headless = True
+        self._driver = webdriver.Chrome(options=options)
+        self._wait = WebDriverWait(self._driver, 30)
+        self._driver.get(self._get_url())
+        userinput = self._wait.until(ec.visibility_of_element_located((By.NAME, self._get_userinput())))
         userinput.clear()
         userinput.send_keys(self._get_username())
-        userpass = driver.find_element_by_name(self._get_passinput())
+        userpass = self._driver.find_element_by_name(self._get_passinput())
         userpass.clear()
         userpass.send_keys(self._get_userpass())
-        driver.find_element_by_xpath(self._get_submitbt()).click()
+        self._driver.find_element_by_xpath(self._get_submitbt()).click()
 
     def _build_list(self, search: str):
         pass
@@ -66,26 +64,26 @@ class Amazon(StreamGuide):
 
     def _navigate_to_prime(self):
         try:
-            useraccount = driver.find_element_by_id("nav-link-yourAccount")
-            hover = ActionChains(driver).move_to_element(useraccount)
+            useraccount = self._driver.find_element_by_id("nav-link-yourAccount")
+            hover = ActionChains(self._driver).move_to_element(useraccount)
             hover.perform()
-            userprime = wait.until(ec.visibility_of_element_located((By.XPATH,
+            userprime = self._wait.until(ec.visibility_of_element_located((By.XPATH,
                                    '//*[@id="nav-flyout-yourAccount"]/div[2]/a[15]')))
             userprime.click()
         except NoSuchElementException:
-            useraccount = driver.find_element_by_id("nav-link-accountList")
-            hover = ActionChains(driver).move_to_element(useraccount)
+            useraccount = self._driver.find_element_by_id("nav-link-accountList")
+            hover = ActionChains(self._driver).move_to_element(useraccount)
             hover.perform()
-            userprime = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-al-your-account"]/a[15]')))
+            userprime = self._wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="nav-al-your-account"]/a[15]')))
             userprime.click()
 
     def _search_prime(self, search: str):
-        searchbox = wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="twotabsearchtextbox"]')))
+        searchbox = self._wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@id="twotabsearchtextbox"]')))
         searchbox.clear()
         searchbox.send_keys(str(search))
-        driver.find_element_by_xpath('//*[@id="nav-search"]/form/div[2]/div').click()
+        self._driver.find_element_by_xpath('//*[@id="nav-search"]/form/div[2]/div').click()
         time.sleep(15)
-        html = driver.page_source
+        html = self._driver.page_source
         return BS(html, features="lxml")
 
     def _build_list(self, search: str):
@@ -104,7 +102,7 @@ class Amazon(StreamGuide):
         super().search(search)
         self._navigate_to_prime()
         result = self._build_list(search)
-        driver.quit()
+        self._driver.quit()
         return result
 
     def _get_url(self):
@@ -138,19 +136,19 @@ class Netflix(StreamGuide):
         super().__init__()
 
     def _navigate_to_profile(self):
-        yourprofile = wait.until(ec.visibility_of_element_located((By.XPATH,
+        yourprofile = self._wait.until(ec.visibility_of_element_located((By.XPATH,
                                  '//*[@id="appMountPoint"]/div/div/div/div/div[2]/div/div/ul/li[1]/div/a/div/div')))
         yourprofile.click()
 
     def _search_netflix(self, search: str):
-        searchicon = wait.until(ec.visibility_of_element_located((By.CLASS_NAME, 'icon-search')))
-        hover = ActionChains(driver).move_to_element(searchicon)
+        searchicon = self._wait.until(ec.visibility_of_element_located((By.CLASS_NAME, 'icon-search')))
+        hover = ActionChains(self._driver).move_to_element(searchicon)
         hover.perform()
         searchicon.click()
-        searchbox = driver.switch_to.active_element
+        searchbox = self._driver.switch_to.active_element
         searchbox.send_keys(str(search))
         time.sleep(5)
-        html = driver.page_source
+        html = self._driver.page_source
         return BS(html, features="lxml")
 
     def _build_list(self, search: str):
@@ -173,7 +171,7 @@ class Netflix(StreamGuide):
         super().search(search)
         self._navigate_to_profile()
         result = self._build_list(search)
-        driver.quit()
+        self._driver.quit()
         return result
 
     def _get_url(self):
@@ -209,20 +207,20 @@ class NowTV(StreamGuide):
         super().__init__()
 
     def _navigate_to_nowtv(self):
-        yourprofile = wait.until(ec.visibility_of_element_located((By.XPATH,
+        yourprofile = self._wait.until(ec.visibility_of_element_located((By.XPATH,
                                  '//*[@id="ib-section-header-region"]/div/div[2]/div/div[2]/nav/ul/li[7]/div/a')))
         yourprofile.click()
 
     def _search_nowtv(self, search: str):
-        searchicon = wait.until(ec.visibility_of_element_located((By.CLASS_NAME, 'search-suggest-input')))
-        hover = ActionChains(driver).move_to_element(searchicon)
+        searchicon = self._wait.until(ec.visibility_of_element_located((By.CLASS_NAME, 'search-suggest-input')))
+        hover = ActionChains(self._driver).move_to_element(searchicon)
         hover.perform()
         time.sleep(5)
         searchicon.click()
-        searchbox = driver.switch_to.active_element
+        searchbox = self._driver.switch_to.active_element
         searchbox.send_keys(str(search))
         time.sleep(10)
-        html = driver.page_source
+        html = self._driver.page_source
         return BS(html, features="lxml")
 
     def _build_list(self, search: str):
@@ -242,7 +240,7 @@ class NowTV(StreamGuide):
         super().search(search)
         self._navigate_to_nowtv()
         result = self._build_list(search)
-        driver.quit()
+        self._driver.quit()
         return result
 
     def _get_url(self):
@@ -267,8 +265,20 @@ class NowTV(StreamGuide):
         conn.close()
 
     def _get_submitbt(self):
-        return '//*[@id="mount"]/div/div/div[2]/div[2]/section/div/section[1]/div/div/div/form/div[3]/button'
+        return '//*[@id="mount"]/div/div/div/main/section[1]/div/section[1]/div/div/div/form/div[3]/button'
 
+class DownloadWorker(Thread):
+
+    def __init__(self, sg_constructor, search_str, completed_function):
+        Thread.__init__(self)
+        self.sg_constructor = sg_constructor
+        self.search_str = search_str
+        self.completed_function = completed_function
+
+    def run(self):
+        sg_instance = self.sg_constructor()
+        results = sg_instance.search(self.search_str)
+        self.completed_function(results)
 
 if __name__ == "__main__":
     amazon_search = Amazon()

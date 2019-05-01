@@ -10,6 +10,7 @@ from kivy.uix.screenmanager import Screen, ScreenManager
 import re
 import webbrowser
 import sqlite3
+from StreamGuideProgram import DownloadWorker
 
 
 # Basic screen class
@@ -113,7 +114,7 @@ class UserDetailsScreen(BaseScreen):
         self.submit_button.bind(on_press=self.assign_and_save_input_text)
 
     # Assigns the users input to a variable so it can be called on and stored in an Sqlite database
-    def assign_and_save_input_text(self, *args):
+    def assign_and_save_input_text(self):
         self.netflixun = self.username_input_nf.text
         self.netflixp = self.password_input_nf.text
         self.amazonun = self.username_input_ap.text
@@ -198,7 +199,7 @@ class SearchScreen(BaseScreen):
         self.search_button.bind(on_release=self.check_user_details)
 
     # This function clears the previous search, so the new links can be added
-    def clear_search(self, *args):
+    def clear_search(self):
         if self.netf_results_frame:
             self.netf_box.remove_widget(self.netf_results_frame)
         if self.ntv_results_frame:
@@ -207,7 +208,7 @@ class SearchScreen(BaseScreen):
             self.amap_box.remove_widget(self.amap_results_frame)
 
     # This ensures that only sites, where the user has entered login details are searched
-    def check_user_details(self, *args):
+    def check_user_details(self):
         db = sqlite3.connect("userdetails.sqlite")
         cursor = db.cursor()
         cursor.execute("SELECT COUNT(*) FROM userdetails WHERE streamer = 'Netflix'")
@@ -223,17 +224,22 @@ class SearchScreen(BaseScreen):
         if ap_details_check != 0:
             self.search_amazon()
 
-    # Function to search Netflix
-    def search_netflix(self, *args):
+    # Function to  start a thread tosearch Netflix
+    def search_netflix(self):
         from StreamGuideProgram import Netflix
+        worker = DownloadWorker(Netflix, self._search_string, self._display_netflix_results)
+        worker.daemon = True
+        worker.start()
+
+    # Function to display the results of the Netflix search on the GUI
+    def _display_netflix_results(self, results):
+        netf_results = results
         self.netf_results_frame = GridLayout(cols=2, rows=5, row_force_default=True, row_default_height=15)
-        netflix_search = Netflix()
-        self.netf_results = netflix_search.search(self._search_string)
         try:
-            for result in self.netf_results:
+            for result in netf_results:
                 results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
                 results_label.bind(on_ref_press=lambda self,
-                                   x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+                                                       x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
                 self.netf_results_frame.add_widget(results_label)
         except TypeError:
             results_label = Label(text="Either your search was incorrect or "
@@ -241,38 +247,48 @@ class SearchScreen(BaseScreen):
             self.netf_results_frame.add_widget(results_label)
         self.netf_box.add_widget(self.netf_results_frame)
 
-    # Function to search Now TV
-    def search_nowtv(self, *args):
+    # Function to start a thread to search Now TV
+    def search_nowtv(self):
         from StreamGuideProgram import NowTV
-        nowtv_search = NowTV()
+        worker = DownloadWorker(NowTV, self._search_string, self._display_nowtv_results)
+        worker.daemon = True
+        worker.start()
+
+    # Function to display the results of the Now TV search on the GUI
+    def _display_nowtv_results(self, results):
+        ntv_results = results
         self.ntv_results_frame = GridLayout(cols=2, rows=5, row_force_default=True, row_default_height=15)
-        self.ntv_results = nowtv_search.search(self._search_string)
         try:
-            for result in self.ntv_results:
+            for result in ntv_results:
                 results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
                 results_label.bind(on_ref_press=lambda self,
-                                   x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+                                                       x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
                 self.ntv_results_frame.add_widget(results_label)
         except IndexError:
             results_label = Label(text=self.ntv_results)
             self.ntv_results_frame.add_widget(results_label)
         self.ntv_box.add_widget(self.ntv_results_frame)
 
-    # Function to search Amazon Prime
-    def search_amazon(self, *args):
+    # Function to start a thread to search Amazon Prime
+    def search_amazon(self):
         from StreamGuideProgram import Amazon
-        amazon_search = Amazon()
+        worker = DownloadWorker(Amazon, self._search_string, self._display_amazon_results)
+        worker.daemon = True
+        worker.start()
+
+    # Function to display the results of the Amazon search on the GUI
+    def _display_amazon_results(self, results):
+        amap_results = results
         self.amap_results_frame = GridLayout(cols=2, rows=5, row_force_default=True, row_default_height=15)
-        self.amap_results = amazon_search.search(self._search_string)
-        for result in self.amap_results:
+        for result in amap_results:
             results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
             results_label.bind(on_ref_press=lambda self,
-                               x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+                                                   x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
             self.amap_results_frame.add_widget(results_label)
         self.amap_box.add_widget(self.amap_results_frame)
 
     # Assigns the users search to a variable to be used in the searching Methonds
-    def assign_input_text(self, *args):
+    def assign_input_text(self):
         self._search_string = self.search_input.text
 
     def screen_navigation(self, *args):
