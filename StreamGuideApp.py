@@ -114,7 +114,7 @@ class UserDetailsScreen(BaseScreen):
         self.submit_button.bind(on_press=self.assign_and_save_input_text)
 
     # Assigns the users input to a variable so it can be called on and stored in an Sqlite database
-    def assign_and_save_input_text(self):
+    def assign_and_save_input_text(self, *args):
         self.netflixun = self.username_input_nf.text
         self.netflixp = self.password_input_nf.text
         self.amazonun = self.username_input_ap.text
@@ -199,7 +199,7 @@ class SearchScreen(BaseScreen):
         self.search_button.bind(on_release=self.check_user_details)
 
     # This function clears the previous search, so the new links can be added
-    def clear_search(self):
+    def clear_search(self, *args):
         if self.netf_results_frame:
             self.netf_box.remove_widget(self.netf_results_frame)
         if self.ntv_results_frame:
@@ -208,7 +208,7 @@ class SearchScreen(BaseScreen):
             self.amap_box.remove_widget(self.amap_results_frame)
 
     # This ensures that only sites, where the user has entered login details are searched
-    def check_user_details(self):
+    def check_user_details(self, *args):
         db = sqlite3.connect("userdetails.sqlite")
         cursor = db.cursor()
         cursor.execute("SELECT COUNT(*) FROM userdetails WHERE streamer = 'Netflix'")
@@ -262,7 +262,7 @@ class SearchScreen(BaseScreen):
             for result in ntv_results:
                 results_label = Label(text='[ref={}]{}[/ref]'.format(result[1], result[0]), markup=True)
                 results_label.bind(on_ref_press=lambda self,
-                                                       x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
+                                   x: webbrowser.open(re.search('=(.*?)]', self.text).group(1)))
                 self.ntv_results_frame.add_widget(results_label)
         except IndexError:
             results_label = Label(text=self.ntv_results)
@@ -288,7 +288,7 @@ class SearchScreen(BaseScreen):
         self.amap_box.add_widget(self.amap_results_frame)
 
     # Assigns the users search to a variable to be used in the searching Methonds
-    def assign_input_text(self):
+    def assign_input_text(self, *args):
         self._search_string = self.search_input.text
 
     def screen_navigation(self, *args):
